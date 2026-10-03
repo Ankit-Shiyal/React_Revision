@@ -1,16 +1,90 @@
-# React + Vite
+# React Todo List 📝
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Live Link: https://react-revision-peach.vercel.app/
 
-Currently, two official plugins are available:
+A simple and responsive **Todo List application built with React.js**.  
+This project demonstrates important React concepts such as **useState, useEffect, props, event handling, conditional rendering, and component-based architecture**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Features
 
-## React Compiler
+- ➕ Add new tasks
+- ✏️ Edit existing tasks
+- 🗑️ Delete tasks
+- ✅ Mark tasks as completed
+- 📊 Display total, completed, and pending tasks
+- 🔄 Dynamic UI updates using React state
+- 📱 Clean and responsive interface
+- 🧩 Component-based React structure
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Technologies Used
 
-## Expanding the ESLint configuration
+- React.js
+- JavaScript (ES6+)
+- HTML5
+- CSS3
+- Vite
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📂 Project Structure
+
+```text
+src/
+├── components/
+│   ├── AddTodo.jsx
+│   └── ListTodo.jsx
+│
+├── App.jsx
+├── style.css
+└── main.jsx
+```
+
+## 📊 Dashboard
+
+The application displays:
+
+- **All Tasks**
+- **Completed Tasks**
+- **Pending Tasks**
+
+The values are calculated dynamically from the Todo state.
+
+
+
+
+The application will run on the local development server provided by Vite.
+
+## 🎯 Learning Objectives
+
+This project was created to practice:
+
+- React Components
+- Props
+- `useState`
+- `useEffect`
+- Event Handling
+- Array `map()`
+- Array `filter()`
+- Conditional Rendering
+- Form Handling
+- CRUD operations in frontend state
+
+## 📸 Project Preview
+
+
+
+<img width="640" height="414" alt="Screenshot 2026-10-03 121143" src="https://github.com/user-attachments/assets/0ecfcc7e-28a5-45df-9f19-b120e60249dd" />
+
+
+## 🔮 Future Improvements
+
+- Add LocalStorage support
+- Add task search and filtering
+- Add task priority
+- Add due dates
+- Add dark mode
+- Connect with a backend API
+- Store Todo data in MongoDB
+
+## 👨‍💻 Author
+
+**Ankit Shiyal**
+
