@@ -1,7 +1,6 @@
 # React Todo List 📝
 
 Live Link: https://react-revision-peach.vercel.app/
-Explanation Video: https://drive.google.com/file/d/1YLEdzlfiDcIJF8t7vWyHR1MrI2x8OxjA/view?usp=drivesdk
 
 A simple and responsive **Todo List application built with React.js**.  
 This project demonstrates important React concepts such as **useState, useEffect, props, event handling, conditional rendering, and component-based architecture**.
