@@ -2,6 +2,8 @@
 
 Live link :https://react-revision-kjyt.vercel.app/
 
+Video link : https://drive.google.com/file/d/14gsOsoSokPS_oz_EAx6pIE-fN1sioPqV/view?usp=drive_link
+
 A responsive **Employee Management System** built using React.js, Vite, React Bootstrap, and Axios. This application allows users to manage employee records with CRUD (Create, Read, Update, Delete) functionality.
 
 ## 🚀 Features
