@@ -1,159 +1,213 @@
-Blog Management System
-A full-stack Blog Management System built with React and a
-Node.js/Express backend. Users can register, log in, create blogs, view
-blog posts, update their own blogs, and delete their own blogs.
-Features
-- User registration and login
-- JWT-based authentication
-- Public blog listing (when the backend GET /blog/allBlog route is
-  configured as public)
-- View individual blog details
-- Create a blog with an image
-- Edit and delete blogs
-- My Blogs page to view blogs created by the logged-in user
-- Search blogs by title
-- Filter blogs by category
-- Responsive interface using React Bootstrap
-- Form validation using Formik and Yup
-- Image uploads using the backend's Multer/Cloudinary integration
-Technology Stack
-Frontend
-- React
+# Blog Management System
+
+A full-stack Blog Management System built with React and a Node.js/Express backend. Users can register, log in, create blogs, view blog posts, update their own blogs, and delete their own blogs.
+
+## Live Demo
+
+🚀 **Live Project:** (https://react-revision-5hzd.vercel.app/)
+
+Click the link above to explore the live application.
+
+## Features
+
+- User Registration and Login
+- JWT-Based Authentication
+- Public Blog Listing
+- View Individual Blog Details
+- Create Blogs with Image Upload
+- Edit and Delete Own Blogs
+- My Blogs Page
+- Search Blogs by Title
+- Filter Blogs by Category
+- Responsive User Interface
+- Form Validation using Formik and Yup
+- Image Upload using Multer and Cloudinary
+- Protected Routes
+- Authentication using Context API
+- API Integration using Axios
+
+## Technology Stack
+
+### Frontend
+- React.js
 - Vite
+- JavaScript
 - React Router DOM
 - Axios
 - Bootstrap
 - React Bootstrap
 - Formik
 - Yup
-- JavaScript
-Backend
-The frontend is designed to work with the existing Blog Management API:
+- Context API
+
+### Backend
 - Node.js
 - Express.js
-- MongoDB and Mongoose
-- JWT authentication
-- Multer and Cloudinary for image uploads
-- Joi validation
-Blog Categories
+- MongoDB
+- Mongoose
+- JWT Authentication
+- Multer
+- Cloudinary
+- Joi Validation
+- REST API
+
+## Blog Categories
+
 - Technology
 - Sports
 - Politics
-Project Structure
-src/
-├── api/
-│   ├── authApi.js
-│   └── blogApi.js
-├── components/
-│   ├── Navbar.jsx
-│   ├── Navbar.css
-│   └── ProtectedRoute.jsx
-├── context/
-│   └── AuthContext.jsx
-├── pages/
-│   ├── Home.jsx
-│   ├── Home.css
-│   ├── Login.jsx
-│   ├── Register.jsx
-│   ├── AddBlog.jsx
-│   ├── EditBlog.jsx
-│   ├── BlogDetails.jsx
-│   ├── MyBlogs.jsx
-│   └── MyBlogs.css
-├── App.jsx
-└── main.jsx
-Installation
-1. Clone the repository
-git clone <your-frontend-repository-url>
-cd <your-project-folder>
-2. Install dependencies
-npm install
-If any of these packages are missing, install them:
-npm install axios bootstrap react-bootstrap react-router-dom formik yup
-3. Configure environment variables
-Create a .env file in the frontend project root:
-VITE_BASE_URL=https://your-backend-url
-Replace the value with your deployed backend URL. Do not add a trailing
-slash.
-4. Start the development server
-npm run dev
-5. Create a production build
-npm run build
-API Endpoints Used
-The frontend uses the following backend endpoints:
 
-  Method   Endpoint             Purpose
-  POST     /user/addUser      Register a user
-POST     /user/userLogin    Log in
-POST     /user/authLogin    Verify the logged-in user
-GET      /user/logoutUser   Log out
-GET      /blog/allBlog      Get all blogs
-POST     /blog/add          Create a blog
-PATCH    /blog/update/:id   Update a blog
-DELETE   /blog/delete/:id   Delete a blog
+## Project Structure
 
-Protected endpoints require this request header:
-Authorization: Bearer <token>
-Image upload field names must match the backend:
-- User profile image: Profile_Pic
-- Blog image: BlogImg
-Authentication and Access
-- The authentication context stores the logged-in user state.
-- The JWT token is stored in localStorage.
-- Protected pages such as Add Blog, Edit Blog, and My Blogs require
-  login.
-- The Home page can show blogs without login only if the backend's
-  GET /blog/allBlog route is public.
-- The frontend displays Edit and Delete actions for the blog owner.
-  The backend must independently verify ownership (or admin
-  permissions) before updating or deleting a blog. Frontend checks
-  alone are not security.
-Important Backend Notes
-For the My Blogs and owner checks, the blog API response must include
-the author's email. For example:
-.populate("Author", "Name Email -_id")
-The backend should also:
-- Keep authentication enabled for create, update, and delete
-  endpoints.
-- Verify that the authenticated user owns the blog or has an
-  authorized admin role before update/delete.
-- Validate uploaded files and handle cases where no new image is
-  supplied during an update.
-- Ensure registration role validation matches the User model's allowed
-  roles.
-Available Scripts
-  Command             Description
-  npm run dev       Start the Vite development server
-npm run build     Build the frontend for production
-npm run preview   Preview the production build
-npm run lint      Run ESLint
-Notes
-- This repository contains the frontend application. The backend must
-  be running and configured separately.
-- Set VITE_BASE_URL to the correct backend URL before running the
-  application.
-- Never commit private API keys, database credentials, JWT secrets, or
-  Cloudinary credentials to the frontend repository.
+    src/
+    ├── api/
+    │   ├── authApi.js
+    │   └── blogApi.js
+    │
+    ├── components/
+    │   ├── Navbar.jsx
+    │   ├── Navbar.css
+    │   └── ProtectedRoute.jsx
+    │
+    ├── context/
+    │   └── AuthContext.jsx
+    │
+    ├── pages/
+    │   ├── Home.jsx
+    │   ├── Home.css
+    │   ├── Login.jsx
+    │   ├── Register.jsx
+    │   ├── AddBlog.jsx
+    │   ├── EditBlog.jsx
+    │   ├── BlogDetails.jsx
+    │   ├── MyBlogs.jsx
+    │   └── MyBlogs.css
+    │
+    ├── App.jsx
+    └── main.jsx
 
 
+### User Authentication APIs
 
+| Method | Endpoint | Description |
+|---|---|---|
+| POST | /user/addUser | Register User |
+| POST | /user/userLogin | User Login |
+| POST | /user/authLogin | Verify Authentication |
+| GET | /user/logoutUser | User Logout |
 
+### Blog Management APIs
 
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | /blog/allBlog | Get All Blogs |
+| POST | /blog/add | Create Blog |
+| PATCH | /blog/update/:id | Update Blog |
+| DELETE | /blog/delete/:id | Delete Blog |
 
+## Authentication and Authorization
 
+The application uses JWT (JSON Web Token) authentication.
 
+- Users can register and log in.
+- JWT tokens are stored in localStorage.
+- Authentication state is managed using React Context API.
+- Protected routes prevent unauthorized access.
+- Add Blog, Edit Blog, and My Blogs pages require authentication.
+- Authorization headers are sent with protected API requests.
 
+Example Authorization Header:
 
+    Authorization: Bearer <token>
 
+## Image Upload
 
+The application supports image uploads using Multer and Cloudinary.
 
+Image field names:
 
+| Field Name | Purpose |
+|---|---|
+| Profile_Pic | User Profile Image |
+| BlogImg | Blog Image |
 
+Images are uploaded to Cloudinary through the backend API.
 
+## Blog Management
 
+Users can perform the following operations:
 
+- Create new blog posts.
+- View all available blog posts.
+- View individual blog details.
+- Update their own blog posts.
+- Delete their own blog posts.
+- Search blogs by title.
+- Filter blogs by category.
+- View their created blogs on the My Blogs page.
 
+## Backend Requirements
 
-    To pick up a draggable item, press the space bar.
-    While dragging, use the arrow keys to move the item.
-    Press space again to drop the item in its new position, or press escape to cancel.
+The backend should:
+
+- Enable public access to GET /blog/allBlog if public blog listing is required.
+- Require authentication for blog creation, updating, and deletion.
+- Verify blog ownership before updating or deleting a blog.
+- Return author information in blog API responses.
+- Validate uploaded images.
+- Handle updates when no new image is uploaded.
+- Ensure registration role validation matches the User model.
+
+For My Blogs and ownership checks, the blog API response should include the author's email.
+
+Example Mongoose Population:
+
+    .populate("Author", "Name Email -_id")
+
+Important: The backend must independently verify blog ownership. Frontend checks alone do not provide security.
+
+## Available Scripts
+
+| Command | Description |
+|---|---|
+| npm run dev | Start development server |
+| npm run build | Create production build |
+| npm run preview | Preview production build |
+| npm run lint | Run ESLint |
+
+## Deployment
+
+The frontend can be deployed using:
+
+- Vercel
+- Netlify
+
+Before deployment:
+
+1. Configure the correct backend URL.
+2. Add the VITE_BASE_URL environment variable.
+3. Build the application using npm run build.
+4. Deploy the generated production build.
+
+The backend must be deployed and configured separately.
+
+## Security Notes
+
+- Never expose JWT secrets in frontend code.
+- Never commit database credentials.
+- Never expose Cloudinary API secrets.
+- Keep private API keys in backend environment variables.
+- Always verify user permissions on the backend.
+
+## Future Improvements
+
+- Pagination for blog listings.
+- Like and Comment Functionality.
+- User Profile Management.
+- Blog Bookmarks.
+- Rich Text Editor.
+- Admin Dashboard.
+
+## Author
+
+**Ankit Shiyal**
