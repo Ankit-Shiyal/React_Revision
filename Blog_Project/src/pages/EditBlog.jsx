@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+
+import { useEffect, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useNavigate, useParams } from "react-router-dom";
@@ -79,19 +80,29 @@ const EditBlog = () => {
   if (error || !blog) {
     return (
       <Container className="mt-5">
-        <div className="alert alert-danger">{error || "Blog not found"}</div>
-        <Button onClick={() => navigate("/")}>Back to Home</Button>
+        <div className="alert alert-danger">
+          {error || "Blog not found"}
+        </div>
+        <Button onClick={() => navigate("/")}>
+          Back to Home
+        </Button>
       </Container>
     );
   }
 
-  if (String(blog.Author?._id) !== String(user?._id)) {
+  const isOwner =
+    blog.Author?.Email?.toLowerCase().trim() ===
+    user?.Email?.toLowerCase().trim();
+
+  if (!isOwner) {
     return (
       <Container className="mt-5">
         <div className="alert alert-danger">
           You cannot edit this blog.
         </div>
-        <Button onClick={() => navigate("/")}>Back to Home</Button>
+        <Button onClick={() => navigate("/")}>
+          Back to Home
+        </Button>
       </Container>
     );
   }
@@ -115,7 +126,9 @@ const EditBlog = () => {
           {({ isSubmitting, setFieldValue, status }) => (
             <Form>
               {status && (
-                <div className="alert alert-danger">{status}</div>
+                <div className="alert alert-danger">
+                  {status}
+                </div>
               )}
 
               <div className="mb-3">
@@ -171,16 +184,25 @@ const EditBlog = () => {
                   src={blog.BlogImg}
                   alt={blog.BlogTitle}
                   className="img-fluid rounded d-block mb-3"
-                  style={{ maxHeight: "220px" }}
+                  style={{
+                    maxHeight: "220px",
+                    objectFit: "cover",
+                  }}
                 />
 
-                <label className="form-label">Choose New Image (Optional)</label>
+                <label className="form-label">
+                  Choose New Image (Optional)
+                </label>
+
                 <input
                   type="file"
                   accept="image/*"
                   className="form-control"
                   onChange={(e) =>
-                    setFieldValue("BlogImg", e.target.files[0] || null)
+                    setFieldValue(
+                      "BlogImg",
+                      e.target.files[0] || null
+                    )
                   }
                 />
               </div>

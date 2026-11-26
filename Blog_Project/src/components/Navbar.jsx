@@ -1,27 +1,50 @@
-import { Link, useNavigate } from "react-router-dom";
+
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import { Navbar as BootstrapNavbar, Nav, Container, Button } from "react-bootstrap";
+import {
+  Navbar as BootstrapNavbar,
+  Nav,
+  Container,
+  Button,
+} from "react-bootstrap";
+import "./Navbar.css";
 
 const Navbar = () => {
   const { user, handleLogout } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const logout = async () => {
-    await handleLogout();
-    navigate("/login");
+    try {
+      await handleLogout();
+      navigate("/login");
+    } catch (error) {
+      alert(error.message);
+    }
   };
 
   return (
-    <BootstrapNavbar bg="dark" variant="dark" expand="lg">
+    <BootstrapNavbar
+      className="custom-navbar"
+      variant="dark"
+      expand="lg"
+      sticky="top"
+    >
       <Container>
-        <BootstrapNavbar.Brand as={Link} to="/">
-          Blog Management
+        <BootstrapNavbar.Brand as={Link} to="/" className="brand-logo">
+          <span className="brand-icon">B</span>
+          BlogSpace
         </BootstrapNavbar.Brand>
 
-        <BootstrapNavbar.Toggle />
-        <BootstrapNavbar.Collapse>
-          <Nav className="ms-auto align-items-center gap-3">
-            <Nav.Link as={Link} to="/">
+        <BootstrapNavbar.Toggle aria-controls="main-navbar" />
+
+        <BootstrapNavbar.Collapse id="main-navbar">
+          <Nav className="ms-auto align-items-lg-center gap-lg-3">
+            <Nav.Link
+              as={Link}
+              to="/"
+              active={location.pathname === "/"}
+            >
               Home
             </Nav.Link>
 
@@ -31,9 +54,19 @@ const Navbar = () => {
                   Add Blog
                 </Nav.Link>
 
-                <span className="text-white">{user.Name}</span>
+                <Nav.Link as={Link} to="/my-blogs">
+                  My Blogs
+                </Nav.Link>
 
-                <Button variant="danger" onClick={logout}>
+                <span className="user-name">
+                  {user.Name}
+                </span>
+
+                <Button
+                  variant="outline-light"
+                  className="logout-btn"
+                  onClick={logout}
+                >
                   Logout
                 </Button>
               </>
@@ -43,9 +76,9 @@ const Navbar = () => {
                   Login
                 </Nav.Link>
 
-                <Nav.Link as={Link} to="/register">
+                <Link to="/register" className="register-btn">
                   Register
-                </Nav.Link>
+                </Link>
               </>
             )}
           </Nav>

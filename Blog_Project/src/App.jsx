@@ -9,6 +9,7 @@ import Register from "./pages/Register";
 import AddBlog from "./pages/AddBlog";
 import EditBlog from "./pages/EditBlog";
 import BlogDetails from "./pages/BlogDetails";
+import MyBlogs from "./pages/MyBlogs";
 
 function App() {
   return (
@@ -34,6 +35,15 @@ function App() {
           element={
             <ProtectedRoute>
               <EditBlog />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/my-blogs"
+          element={
+            <ProtectedRoute>
+              <MyBlogs />
             </ProtectedRoute>
           }
         />
