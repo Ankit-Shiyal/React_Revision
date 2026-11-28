@@ -6,6 +6,9 @@ A full-stack Blog Management System built with React and a Node.js/Express backe
 
 🚀 **Live Project:** (https://react-revision-5hzd.vercel.app/)
 
+🚀 **Backend Live:**(https://blog-bv3x.onrender.com)
+
+🚀 **Backend Repository:** (https://github.com/Ankit-Shiyal/practice-node.js/tree/main/BlogProject)
 
 🚀 **Video Link :** (https://drive.google.com/file/d/1JTuSG-NleC_nt-5WnyLPuh7yRijgAu7A/view?usp=drive_link)
 
